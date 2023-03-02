@@ -1,38 +1,211 @@
 .App {
-  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+min-width: 400px; 
+ min-height: 200px;
+  margin-top: 70px;
+  display: flex;
+    justify-content: center;
+  align-items: center;
+  background-color: aliceblue;
+  ;
+  flex-direction: column;
+  border-radius: 15px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#light {
+  background-color: #f3ebf6;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#dark {
+  background-color: rgb(6, 10, 51);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  position: relative;
+width: auto;
+display: flex;
+justify-content: center;
+align-items: center;
+height: auto;
+background: #3F72AF;
+}
+.signUpContainer{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 15px 0;
 }
-
-.App-link {
-  color: #61dafb;
+.padding{
+  margin: 35px 0; 
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.name{
+margin: 10px 0;
+}
+.emailHandle {
+  margin-bottom: 10px;
+}
+.fullName{
+  width: 250px;
+  height: 35px;
+  background-color: #acc0e6;
+  border-radius: 5px;
+  border: none;
+}
+.sign-login{
+  display: flex;
+}
+.moveSignUp{
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
+  justify-content: center;
+}
+.SIGNUP{
+  border: none;
+  background-color: #acc0e6;
+  height: 50px;
+  width: 85px;
+  border-radius: 10px;
+}
+.SIGNUP:hover{
+cursor: pointer;
+color: #02234a;
+}
+.register{
+font-size: 18px;
+}
+.link:hover{
+  color: #3F72AF;
+}
+.link{
+  color: black;
+  text-decoration: none;
+}
+.Input {
+  background-color: #acc0e6;
+  width: 250px;
+height: 32px;
+border-radius: 5px;
+border: none;
+}
+.Add {
+background-color: #3F72AF;
+font-size: 25px;
+color: aliceblue;
+display: flex;
+height: 33px;
+border-radius: 5px;
+}
+.Add:hover{
+  cursor: pointer;
+}
+.input-dev{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.appName{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  line-height: 45px;
+  margin-bottom: -0px;
+  font-weight: 400;
+}
+.userName{
+  font-size: 20px;
+  font-weight: 200;
+}
+.name-logout{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.todoList{
+  margin-bottom: 25px;
+}
+.logout{
+font-size: 14px;
+line-height: 35px;
+margin-top: 13px;
+font-weight: 400;
+margin-left: 15px;
+}
+.logout:hover{
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: #3F72AF;
+}
+.taskText{
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 520;
+}
+.taskCompleted {
+  text-decoration:line-through;
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 520;
+  color: green;
+}
+.singleTodo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
+  width: 100%;
+}
+.divTodo {
+  background-color: #acc0e6;
+  display: flex;
+  border-radius: 10px;
+  width: 100%;
+  align-items: center;
+  padding: 0 10px;
+  justify-content: space-between;
+}
+.space{
+  background-color: #acc0e6;
+  display: flex;
+  min-width: 400px; 
+  align-items: center;
+  margin: 0 5px;
+  border-radius: 10px;
+  justify-content: space-between;
+}
+.edit{
+  margin: 0 10px;
+}
+.edit:hover{
+  cursor: pointer;
+  color: #02234a;
+}
+.delete:hover{
+  cursor: pointer;
+  color: red;
+}
+.complete:hover{
+  cursor: pointer;
+  color: green;
+}
+.completed:hover{
+  cursor: pointer;
+color: red;
+}
+.completed{
+  color: green;
+  margin-right: 10px;
+}
+.hr{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0; 
+ color: #acc0e6;
+}
+.navbar{
+  background-color:#acc0e6;
+  width: 100%;
+  display: flex;
+  min-height: 60px;
+  border-radius: 10px;
 }
