@@ -26,6 +26,8 @@ export default function Todo() {
   const addTask = async () => {
     if (todo === "") {
       alert("Enter your task");
+    } else if (!userId) {
+      alert("Please login first");
     } else {
       const data = collection(db, `tasks/${userId}/task`);
       await addDoc(data, {
