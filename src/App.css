@@ -65,6 +65,22 @@ margin: 10px 0;
   width: 85px;
   border-radius: 10px;
 }
+.move{
+  display: flex;
+  position: relative;
+  margin-left: 5px;
+}
+.handle-update{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.UPDATE{
+  border: none;
+  height: 32px;
+  background-color: #acc0e6;
+  border-radius: 10px;
+}
 .SIGNUP:hover{
 cursor: pointer;
 color: #02234a;
@@ -82,6 +98,13 @@ font-size: 18px;
 .Input {
   background-color: #acc0e6;
   width: 250px;
+height: 32px;
+border-radius: 5px;
+border: none;
+}
+.INPUT {
+  background-color: #acc0e6;
+  width: 200px;
 height: 32px;
 border-radius: 5px;
 border: none;

@@ -45,14 +45,19 @@ export const SingleTodo = ({ task }: TaskType) => {
   return (
     <div className="singleTodo" key={task.id}>
       {edit ? (
-        <>
-          <input
+        <div className="handle-update">
+      <div className="input-dev">
+      <input
+                className="INPUT"
             value={editTodo}
             onChange={(e) => setEditTodo(e.target.value)}
           />
-          <button onClick={() => updated(task.id)}>UPDATE</button>
-        </>
-      ) : (
+          </div> 
+          <div className="move">
+          <button className="UPDATE" onClick={() => updated(task.id)}>UPDATE</button>
+          </div>
+          </div>
+  ) : (
         <div className="divTodo">
           <div className="text">
             <h1
