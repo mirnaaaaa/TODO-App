@@ -134,6 +134,7 @@ margin-left: 15px;
   cursor: pointer;
   border-radius: 15px;
   background-color: #3F72AF;
+  color: black;
 }
 .taskText{
   font-size: 20px;

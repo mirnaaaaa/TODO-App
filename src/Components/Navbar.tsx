@@ -1,18 +1,19 @@
 import { signOut } from "firebase/auth";
-import { getDoc, doc } from "firebase/firestore";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ReactSwitch from "react-switch";
-import { auth, db } from "../firebaseConfig";
+import { auth } from "../firebaseConfig";
 import { IdContext, User, UserContextType } from "../IdContext";
-
 interface ThemeType {
   setTheme: React.Dispatch<React.SetStateAction<string>>;
   theme: string;
 }
 
 export default function Navbar({ theme, setTheme }: ThemeType) {
-  const { userId, setUserId, user,setUser } = useContext(IdContext) as UserContextType;
+  const { userId, setUserId, user, setUser } = useContext(
+    IdContext
+  ) as UserContextType;
+
   let navigate = useNavigate();
 
   const toggleTheme = () => {
@@ -24,7 +25,7 @@ export default function Navbar({ theme, setTheme }: ThemeType) {
       navigate("/Login");
     });
     setUserId(null);
-    setUser(undefined)
+    setUser(undefined);
   };
 
   return (
@@ -34,14 +35,23 @@ export default function Navbar({ theme, setTheme }: ThemeType) {
           <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
         </div>
         <div>
-          {userId &&
+          {!userId ? (
+            <div className="sign-login">
+              <Link className="link" to="/SignUp">
+                <h1 className="logout">SignUp</h1>
+              </Link>
+              <Link className="link" to="/Login">
+                <h1 className="logout">Login</h1>
+              </Link>
+            </div>
+          ) : (
             <div className="name-logout">
-            <h1 className="userName">{user?.map((x: User) => x.name)}</h1>
+              <h1 className="userName">{user?.map((x: User) => x.name)}</h1>
               <h1 className="logout" onClick={handleLogout}>
                 Logout
               </h1>
             </div>
-          }
+          )}
         </div>
       </div>
     </div>
