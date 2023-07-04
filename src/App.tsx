@@ -1,13 +1,11 @@
 import "./App.css";
-import React, { useContext } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from "./Components/SignUp";
 import Todo from "./Components/Todo";
 import Navbar from "./Components/Navbar";
 import Login from "./Components/Login";
 import { useState, createContext } from "react";
-import ReactSwitch from "react-switch";
-import { IdContext, IdContextProvider, UserContextType } from "./IdContext";
 
 export const ThemeContext = createContext(null);
 

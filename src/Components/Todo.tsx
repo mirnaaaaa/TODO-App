@@ -1,18 +1,19 @@
 import { addDoc, collection, query, onSnapshot } from "firebase/firestore";
 import { db } from "../firebaseConfig";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Tasks } from "./../TodoType";
 import { SingleTodo } from "./SingleTodo";
-import { IdContext, UserContextType } from "../IdContext";
 import { AiFillPlusSquare } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 export default function Todo() {
-  const { userId } = useContext(IdContext) as UserContextType;
   const [todo, setTodo] = useState<string | number>();
   const [tasks, setTasks] = useState<Tasks[]>([]);
 
+  const id = useSelector((state: any) => state.users.value.id);
+
   useEffect(() => {
-    const q = query(collection(db, `tasks/${userId}/task`));
+    const q = query(collection(db, `tasks${id}task`));
     const read = onSnapshot(q, (snap) => {
       let array: any = [];
       snap.forEach((doc) => {
@@ -21,15 +22,15 @@ export default function Todo() {
       setTasks(array);
     });
     return () => read();
-  }, [userId]);
+  }, [id]);
 
   const addTask = async () => {
     if (todo === "") {
       alert("Enter your task");
-    } else if (!userId) {
+    } else if (!id) {
       alert("Please login first");
     } else {
-      const data = collection(db, `tasks/${userId}/task`);
+      const data = collection(db, `tasks${id}task`);
       await addDoc(data, {
         text: todo,
         Completed: false

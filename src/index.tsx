@@ -3,16 +3,25 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { IdContextProvider } from './IdContext';
+import {configureStore} from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import users from './features/Users'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const store = configureStore({
+  reducer: {
+    users
+  }
+})
+
 root.render(
   <React.StrictMode>
-        <IdContextProvider>
-    <App />
-    </IdContextProvider>
+          <Provider store={store}>
+          <App />
+          </Provider>
   </React.StrictMode>
 );
 

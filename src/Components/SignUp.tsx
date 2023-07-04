@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { updateProfile, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebaseConfig";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 export default function SignUp() {
   const [dataSignUp, setDataSignUp] = useState({
@@ -9,8 +9,6 @@ export default function SignUp() {
     Email: "",
     Password: ""
   });
-
-  const database = collection(db, "users");
 
   let navigate = useNavigate();
 
@@ -27,13 +25,17 @@ export default function SignUp() {
     ).then((res) => {
       // const user= res.user
       setDoc(doc(db, "users", res.user.uid), {
-        name: dataSignUp.Name,
+        displayName: dataSignUp.Name,
         uid: res.user.uid
       }).then(() => {
         setDataSignUp({
           Name: "",
           Email: "",
           Password: ""
+        });
+        const user = res.user;
+        updateProfile(user, {
+          displayName: dataSignUp.Name
         });
         setTimeout(() => {
           navigate("/");
