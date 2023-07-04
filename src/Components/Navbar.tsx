@@ -43,7 +43,7 @@ export default function Navbar({ theme, setTheme }: ThemeType) {
       navigate("/Login");
     });
   };
-console.log(Name)
+
   return (
     <div className="navbar">
       <div className="space">
