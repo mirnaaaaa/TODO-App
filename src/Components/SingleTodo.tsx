@@ -16,7 +16,7 @@ export const SingleTodo = ({ task }: TaskType) => {
   const ID = useSelector((state: any) => state.users.value.id);
 
   const handleCompleted = (id: Tasks) => {
-    const toUpdate = doc(db, `tasks${ID}task${id.id}`);
+    const toUpdate = doc(db, `tasks/${ID}/task/${id.id}`);
     updateDoc(toUpdate, {
       Completed: !id.Completed
     }).catch((err) => console.log(err));
@@ -29,7 +29,7 @@ export const SingleTodo = ({ task }: TaskType) => {
   };
 
   const updated = (id: string | number) => {
-    const edited = doc(db, `tasks${ID}task${id}`);
+    const edited = doc(db, `tasks/${ID}/task/${id}`);
     updateDoc(edited, {
       text: editTodo
     });
@@ -38,7 +38,7 @@ export const SingleTodo = ({ task }: TaskType) => {
   };
 
   const handleDelete = async (id: string | number) => {
-    const toDelete = doc(db, `tasks${ID}task${id}`);
+    const toDelete = doc(db, `tasks/${ID}/task/${id}`);
     await deleteDoc(toDelete);
   };
 

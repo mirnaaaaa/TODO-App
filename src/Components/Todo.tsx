@@ -13,28 +13,32 @@ export default function Todo() {
   const id = useSelector((state: any) => state.users.value.id);
 
   useEffect(() => {
-    const q = query(collection(db, `tasks${id}task`));
-    const read = onSnapshot(q, (snap) => {
-      let array: any = [];
-      snap.forEach((doc) => {
-        array.push({ ...doc.data(), id: doc.id });
+    if (id) {
+      const q = query(collection(db, `tasks/${id}/task`));
+      const read = onSnapshot(q, (snap) => {
+        let array: any = [];
+        snap.forEach((doc) => {
+          array.push({ ...doc.data(), id: doc.id });
+        });
+        setTasks(array);
       });
-      setTasks(array);
-    });
-    return () => read();
+      return () => read();
+    }
   }, [id]);
 
   const addTask = async () => {
-    if (todo === "") {
-      alert("Enter your task");
-    } else if (!id) {
-      alert("Please login first");
-    } else {
-      const data = collection(db, `tasks${id}task`);
-      await addDoc(data, {
-        text: todo,
-        Completed: false
-      });
+    if (id) {
+      if (todo === "") {
+        alert("Enter your task");
+      } else if (!id) {
+        alert("Please login first");
+      } else {
+        const data = collection(db, `tasks/${id}/task`);
+        await addDoc(data, {
+          text: todo,
+          Completed: false
+        });
+      }
     }
     setTodo("");
   };

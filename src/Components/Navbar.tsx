@@ -12,13 +12,14 @@ interface ThemeType {
 
 export default function Navbar({ theme, setTheme }: ThemeType) {
   let navigate = useNavigate();
+
   const Name = useSelector((state: any) => state.users.value.displayName);
   const dispatch = useDispatch();
 
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
   };
-console.log(Name)
+
   useEffect(() => {
     const Auth = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -35,14 +36,14 @@ console.log(Name)
     return () => {
       Auth();
     };
-  }, [dispatch, Name]);
+  }, [dispatch]);
 
   const handleLogout = async () => {
     await signOut(auth).then(() => {
       navigate("/Login");
     });
   };
-
+console.log(Name)
   return (
     <div className="navbar">
       <div className="space">
